@@ -6,15 +6,7 @@ const pages = [
       title: 'Home',
       description: 'Home Page'
     },
-    template: './src/pages/home.hbs'
-  },
-  {
-    output: './about/index.html',
-    content: {
-      title: 'About',
-      description: 'About Page'
-    },
-    template: './src/pages/about.hbs'
+    template: './src/docs/pages/index.hbs'
   }
 ]
 

@@ -29,9 +29,9 @@ module.exports = {
         loader: 'handlebars-loader',
         query: {
           partialDirs: [
-            path.join(__dirname, '../src', 'layouts'),
-            path.join(__dirname, '../src', 'components'),
-            path.join(__dirname, '../src', 'pages')
+            path.join(__dirname, '../src/docs', 'layouts'),
+            path.join(__dirname, '../src', 'context'),
+            path.join(__dirname, '../src', 'pattern')
           ]
         }
       }
