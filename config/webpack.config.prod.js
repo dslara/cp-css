@@ -17,8 +17,17 @@ module.exports = webpackMerge(baseConfig, {
         use: ExtractTextPlugin.extract({
           use: [
             { loader: 'css-loader', options: { sourceMap: true } },
-            { loader: 'sass-loader', options: { sourceMap: true } }
-          ]
+            {
+              loader: 'postcss-loader', options: {
+                config: {
+                  path: './config/postcss.config.js'
+                },
+                plugins: (loader) => [
+                  require('postcss-cssnext')()
+                ],
+                sourceMap: true
+              }
+            }          ]
         })
       }
     ]

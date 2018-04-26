@@ -24,6 +24,17 @@ module.exports = webpackMerge(baseConfig, {
             }
           },
           {
+            loader: 'postcss-loader', options: {
+              config: {
+                path: './config/postcss.config.js'
+              },
+              plugins: (loader) => [
+                require('postcss-cssnext')()
+              ],
+              sourceMap: true
+            }
+          },
+          {
             loader: 'sass-loader', options: {
               sourceMap: true
             }
