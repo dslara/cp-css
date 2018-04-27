@@ -1435,6 +1435,12 @@ cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     parse-json "^2.2.0"
     require-from-string "^1.1.0"
 
+cq-prolyfill@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/cq-prolyfill/-/cq-prolyfill-0.4.0.tgz#68dd3c121dc2d6731408a4b38e68e058764ac6ca"
+  dependencies:
+    postcss "^5.0.2"
+
 create-ecdh@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.1.tgz#44223dfed533193ba5ba54e0df5709b89acf1f82"
@@ -1519,7 +1525,7 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
-css-loader@^0.28.9:
+css-loader@^0.28.11:
   version "0.28.11"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.11.tgz#c3f9864a700be2711bb5a2462b2389b1a392dab7"
   dependencies:
@@ -3613,6 +3619,12 @@ merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
 
+merge-source-map@^1.0.4:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/merge-source-map/-/merge-source-map-1.1.0.tgz#2fdde7e6020939f70906a68f2d7ae685e4c8c646"
+  dependencies:
+    source-map "^0.6.1"
+
 methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
@@ -4762,6 +4774,14 @@ postcss-nesting@^4.0.1, postcss-nesting@^4.2.1:
   resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-4.2.1.tgz#0483bce338b3f0828ced90ff530b29b98b00300d"
   dependencies:
     postcss "^6.0.11"
+
+postcss-node-sass@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/postcss-node-sass/-/postcss-node-sass-2.1.4.tgz#8d3eb92297a23356072b277661705972fd0dfab5"
+  dependencies:
+    merge-source-map "^1.0.4"
+    node-sass "^4.7.2"
+    postcss "^6.0.14"
 
 postcss-normalize-charset@^1.1.0:
   version "1.1.1"

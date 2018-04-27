@@ -28,9 +28,6 @@ module.exports = webpackMerge(baseConfig, {
               config: {
                 path: './config/postcss.config.js'
               },
-              plugins: (loader) => [
-                require('postcss-cssnext')()
-              ],
               sourceMap: true
             }
           },
