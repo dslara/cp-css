@@ -1,0 +1,30 @@
+
+/* -------------------------------------------------------------------------
+ * CORE SETTINGS
+ *
+ */
+
+$core__font-size:                              16px !default;
+
+/* SAFE CHECKING
+ * Check that the chosen core values are pixel numbers.
+ */
+
+@if (type-of($core__font-size) == number) {
+
+  @if (unit($core__font-size) != "px") {
+    @error "$core__font-size: needs to be a pixel value.";
+  }
+
+} @else {
+  @error "$core__font-size: needs to be a number.";
+}
+
+// Base Paths
+
+$core__path--img:                              "/assets/img" !default;
+$core__path--fonts:                            "/assets/fonts" !default;
+
+// Imports
+
+@import "config/main";
