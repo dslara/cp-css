@@ -10,6 +10,9 @@ yarn-error.log*
 # Webstorm idea
 .idea
 
+# Visual Studio Code
+.vscode
+
 # Runtime data
 pids
 *.pid
