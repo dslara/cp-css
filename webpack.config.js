@@ -5,23 +5,53 @@ const devServer = require('webpack-dev-server');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const pages = require('./config/config.pages');
+const pagesConfig = require('./config/pages.config');
+const styleConfig = require('./config/style.config');
+const fileConfig = require('./config/file.config');
+
+const rootPath = './';
+const srcPath = rootPath + 'src/';
+const distPath = rootPath + 'dist/';
+const docsPath = rootPath + 'dist/';
+
+const styles = {
+  test: /\.scss$/,
+  use: [{loader: 'style-loader'}, MiniCssExtractPlugin.loader].concat(styleConfig)
+};
+
+const scripts = {
+  test: /\.js$/,
+  loader: "babel-loader",
+  exclude: /node_modules/,
+  options: { presets: ['env'] }
+};
+
+const templates = {
+  test: /\.hbs$/,
+  loader: 'handlebars-loader',
+  query: {
+    partialDirs: [
+      path.join(__dirname, docsPath, 'layouts'),
+      path.join(__dirname, srcPath, 'pages'),
+    ]
+  }
+};
 
 const baseConfig = {
   entry: {
     main: [
-      './src/app.js'
+      srcPath + 'app.js'
     ]
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: "/"
+    path: path.resolve(__dirname, distPath),
+    publicPath: '/'
   },
   devServer: {
     port: 3333,
     publicPath: '/',
-    contentBase: path.resolve(__dirname, './src'),
+    contentBase: path.resolve(__dirname, srcPath),
     watchContentBase: true,
     overlay: true,
     noInfo: true
@@ -29,76 +59,9 @@ const baseConfig = {
   devtool: 'eval',
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
-        options: {
-          presets: ['env']
-        }
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader',
-        exclude: /node_modules/,
-        options: {
-          name: '[name].[ext]',
-          publicPath: "/modules/_core/assets/fonts/archivo_narrow/",
-          outputPath: "assets/fonts/archivo_narrow/"
-        }
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'postcss-loader', options: {
-              config: {
-                path: './config/postcss.config.js'
-              },
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              path: path.resolve(__dirname, 'cpcss'),
-              data: "$core__path--fonts: '/assets/fonts';"
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(jpg|png|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "assets/images/[name].[ext]"
-            }
-          }
-        ]
-      },
-      {
-        test: /\.hbs$/,
-        loader: 'handlebars-loader',
-        query: {
-          partialDirs: [
-            path.join(__dirname, './docs', 'layouts'),
-            path.join(__dirname, './src', 'pages'),
-          ]
-        }
-      }
+      scripts,
+      styles,
+      templates
     ]
   },
   plugins: [
@@ -111,6 +74,7 @@ const baseConfig = {
   ]
 }
 
-baseConfig.plugins = baseConfig.plugins.concat(pages);
+baseConfig.plugins = baseConfig.plugins.concat(pagesConfig);
+baseConfig.module.rules = baseConfig.module.rules.concat(fileConfig);
 
 module.exports = baseConfig;
