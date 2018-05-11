@@ -1,0 +1,58 @@
+
+/* -------------------------------------------------------------------------
+ * ICONS
+ *
+ * Material icons
+ *
+ */
+
+@import "vars";
+@import "mixins";
+
+// Font importer
+// --------------------------------------------------
+
+@at-root {
+  @font-face {
+    font-family: $a-icons__font-family;
+    font-style: normal;
+    font-weight: 400;
+    src: url("#{$config-core__path--fonts}/<%= fontName %>/<%= fontName %>.woff2") format("woff2"),
+    url("#{$config-core__path--fonts}/<%= fontName %>/<%= fontName %>.woff") format("woff");
+  }
+}
+
+@if variable-exists(web-fonts) {
+  $web-fonts: map-merge($web-fonts, ("icons": "#{$config-core__path--fonts}/<%= fontName %>/<%= fontName %>.woff2"));
+}
+
+// Material output
+// --------------------------------------------------
+
+[class^= "<%= cssClass%>"],
+[class*= " <%= cssClass%>"] {
+  &::#{$a-icons__pseudo-element} {
+    @include <%= cssClass%>__styles;
+  }
+}
+
+
+// Glyph modifiers
+// --------------------------------------------------
+
+@each $_icon-name, $_icon-glyph in $<%= cssClass %>__glyphs {
+  .<%= cssClass%>--#{$_icon-name} {
+    &::#{$a-icons__pseudo-element} { content: $_icon-glyph; }
+  }
+}
+
+
+// Size modifiers
+// --------------------------------------------------
+
+@each $_size-name, $_size-value in $a-icons__sizes {
+  .<%= cssClass%>--size-#{$_size-name} {
+    &::#{$a-icons__pseudo-element} { font-size: $_size-value; }
+  }
+}
+
