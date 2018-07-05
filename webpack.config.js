@@ -1,6 +1,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const devServer = require('webpack-dev-server');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -12,7 +13,6 @@ const fileConfig = require('./config/file.config');
 const rootPath = './';
 const srcPath = rootPath + 'src/';
 const distPath = rootPath + 'dist/';
-const docsPath = rootPath + 'dist/';
 
 const styles = {
   test: /\.scss$/,
@@ -28,13 +28,18 @@ const scripts = {
 
 const templates = {
   test: /\.hbs$/,
-  loader: 'handlebars-loader',
-  query: {
-    partialDirs: [
-      path.join(__dirname, docsPath, 'layouts'),
-      path.join(__dirname, srcPath, 'pages'),
-    ]
-  }
+  use: [
+    {
+      loader: 'html-loader'
+    },
+    {
+      loader: 'assemble-webpack-loader',
+      options: {
+        layouts: path.resolve('./docs/**/*.hbs'),
+        partials: path.resolve('./src/modules/**/*.hbs')
+      }
+    }
+  ]
 };
 
 const baseConfig = {
