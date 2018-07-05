@@ -1,0 +1,27 @@
+/* -------------------------------------------------------------------------
+ * ICONS mixins
+ *
+ */
+
+
+// Material mixins
+// --------------------------------------------------
+
+@mixin <%= cssClass%>__styles {
+	font-family: $a-icons__font-family;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+@mixin <%= cssClass%>($_icon-name, $_pseudo: $a-icons__pseudo-element) {
+  &::#{$_pseudo} {
+    @include <%= cssClass%>__styles;
+    content: map_get($<%= cssClass %>__glyphs, $_icon-name);
+  }
+}

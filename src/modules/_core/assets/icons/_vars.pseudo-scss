@@ -1,0 +1,51 @@
+/* -------------------------------------------------------------------------
+ * ICONS variables
+ *
+ */
+
+
+$config-core__path--fonts:               "/assets/fonts" !default;
+
+
+// Material variables
+// --------------------------------------------------
+
+$a-icons__class-name:                 "<%= cssClass %>" !default;
+$a-icons__font-family:                "<%= fontName %>" !default;
+$a-icons__pseudo-element:             "before" !default;
+$a-icons__sizes:                      (
+  "xs":     .5em,
+  "sm":     1em,
+  "md":     1.5em,
+  "lg":     1.8em,
+  "xl":     2.5em,
+  "xxl":    3em
+) !default;
+$a-icons__class-names:                () !default;
+
+
+$<%= cssClass %>__glyphs: (
+<% _.each(glyphs, function(glyph) { %>"<%= glyph.fileName%>" : "\<%= glyph.codePoint %>",
+<% }); %>
+);
+
+
+// Save glyph modifier class names to $brand__class-names
+// --------------------------------------------------
+
+@if variable-exists(class-names) {
+
+  @each $_icon-name, $_icon-glyph in $<%= cssClass %>__glyphs {
+
+    $a-icons__class-names: append($a-icons__class-names, (
+      'name': '#{$_icon-name}',
+      'class': '<%= cssClass%>--#{$_icon-name}',
+    ));
+
+  }
+
+  $class-names: map-merge($class-names, (
+      'a-icons': $a-icons__class-names
+  ));
+
+}
