@@ -1,21 +1,6 @@
 
-$core-font-family__archivonarrow-bold:                'archivo_narrowbold' !default;
 $core-font-family__archivonarrow-medium:              'archivo_narrowmedium' !default;
 $core-font-family__archivonarrow-regular:             'archivo_narrowregular' !default;
-
-@font-face {
-  font-family: $core-font-family__archivonarrow-bold;
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: local('Archivo Narrow'), local('Archivo Narrow Book'), local('archivonarrow-bold'),
-  url('#{$core__path--fonts}/archivo_narrow/archivonarrow-bold.woff2') format('woff2'),
-  url('#{$core__path--fonts}/archivo_narrow/archivonarrow-bold.woff') format('woff');
-}
-
-@if variable-exists(web-fonts) {
-  $web-fonts: map-merge($web-fonts, ("archivonarrow-bold": "#{$core__path--fonts}/archivo_narrow/archivonarrow-bold.woff2"));
-}
 
 @font-face {
   font-family: $core-font-family__archivonarrow-medium;

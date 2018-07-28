@@ -1,26 +1,30 @@
 
-const files = [
-  {
-    test: /\.(eot|svg|ttf|woff|woff2)$/,
-    loader: 'file-loader',
-    exclude: /node_modules/,
-    options: {
-      name: '[name].[ext]',
-      publicPath: "/modules/_core/assets/fonts/archivo_narrow/",
-      outputPath: "assets/fonts/archivo_narrow/"
-    }
-  },
-  {
-    test: /\.(jpg|png|gif)$/,
-    use: [
+import PATHS from './paths.config'
+
+const files = () => ({
+  module: {
+    rules: [
       {
-        loader: "file-loader",
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        exclude: /node_modules/,
         options: {
-          name: "assets/images/[name].[ext]"
+          limit: '8192',
+          name: '[name].[ext]',
+          outputPath: PATHS.FONTS
+        }
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: "file-loader",
+        exclude: /node_modules/,
+        options: {
+          name: "[name].[ext]",
+          outputPath: PATHS.IMG
         }
       }
     ]
   }
-]
+})
 
-module.exports = files;
+export default files
