@@ -2,7 +2,7 @@
 import data from './data.json';
 
 export default {
-  name: 'PatternsHeader',
+  name: 'Card',
   data() {
     return data
   },

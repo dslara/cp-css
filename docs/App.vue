@@ -1,13 +1,13 @@
 <template>
   <div>
     <h1>{{msg}}</h1>
-    <patterns-header/>
+    <card/>
   </div>
 </template>
 
 <script>
 
-  import PatternsHeader from '../src/modules/patterns/master/header/main';
+  import Card from '../src/modules/patterns/layout/card/main';
 
   export default {
     name: 'app',
@@ -17,7 +17,7 @@
       }
     },
     components: {
-      PatternsHeader,
+      Card,
     }
   }
 </script>
