@@ -1,0 +1,33 @@
+
+$core-font-family__opensans-folder:                   'open_sans' !default;
+$core-font-family__opensans-regular:                  'opensans-regular' !default;
+$core-font-family__opensans-bold:                     'opensans-bold' !default;
+
+@font-face {
+  font-family: $core-font-family__opensans-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: local('Open Sans'), local('Open Sans'), local(#{$core-font-family__opensans-regular}),
+  url('#{$core__path--fonts}/#{$core-font-family__opensans-folder}/#{$core-font-family__opensans-regular}.woff2') format('woff2'),
+  url('#{$core__path--fonts}/#{$core-font-family__opensans-folder}/#{$core-font-family__opensans-regular}.woff') format('woff');
+}
+
+@if variable-exists(web-fonts) {
+  $web-fonts: map-merge($web-fonts, ("#{$core-font-family__opensans-regular}": "#{$core__path--fonts}/#{$core-font-family__opensans-folder}/#{$core-font-family__opensans-regular}.woff2"));
+}
+
+@font-face {
+  font-family: $core-font-family__opensans-bold;
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: local('Open Sans Bold'), local('Open Sans Bold'), local(#{$core-font-family__opensans-bold}),
+  url('#{$core__path--fonts}/#{$core-font-family__opensans-folder}/#{$core-font-family__opensans-bold}.woff2') format('woff2'),
+  url('#{$core__path--fonts}/#{$core-font-family__opensans-folder}/#{$core-font-family__opensans-bold}.woff') format('woff');
+}
+
+@if variable-exists(web-fonts) {
+  $web-fonts: map-merge($web-fonts, ("#{$core-font-family__opensans-bold}": "#{$core__path--fonts}/#{$core-font-family__opensans-folder}/#{$core-font-family__opensans-bold}.woff2"));
+}
+

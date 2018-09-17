@@ -1,9 +1,10 @@
 
-const path = require('path');
-const fs = require('fs');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path'
+import fs from 'fs'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import PATHS from './paths.config'
 
-const folderPath = './docs/pages/';
+const folderPath = `${PATHS.DOCS}/pages/`;
 const EXTENSION = '.hbs';
 const files = fs.readdirSync(folderPath);
 
@@ -21,4 +22,4 @@ hbsFiles.forEach(file => {
   );
 })
 
-module.exports = pages;
+export default pages
