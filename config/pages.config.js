@@ -4,8 +4,8 @@ import fs from 'fs'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import PATHS from './paths.config'
 
-const folderPath = `${PATHS.DOCS}/pages/`;
-const EXTENSION = '.hbs';
+const folderPath = `${PATHS.DOCS}/`;
+const EXTENSION = '.html';
 const files = fs.readdirSync(folderPath);
 
 let hbsFilter = (file) => path.extname(file).toLowerCase() === EXTENSION;

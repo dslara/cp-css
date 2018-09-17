@@ -1,6 +1,7 @@
 
 import path from 'path'
 import fs from 'fs'
+import { VueLoaderPlugin } from 'vue-loader'
 
 const getDirs = (basePath) => {
   const files = fs.readdirSync(basePath)
@@ -12,22 +13,24 @@ const templates = (layouts, partials) => ({
   module: {
     rules: [
       {
-        test: /\.hbs$/,
+        test: /\.vue$/,
         use: [
           {
-            loader: 'handlebars-loader',
-            query: {
-              partialDirs: [].concat(
-                getDirs(layouts),
-                getDirs(partials),
-                getDirs(`${partials}/patterns/form`)
-              )
-            }
+            loader: 'vue-loader'
           }
         ]
       }
     ]
-  }
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    extensions: ['.ts', '.js', '.vue', '.json']
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ]
 })
 
 export default templates
