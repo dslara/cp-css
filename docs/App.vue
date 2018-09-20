@@ -1,23 +1,20 @@
 <template>
   <div>
     <h1>{{msg}}</h1>
-    <card/>
+     <p-card :content=msg></p-card>
+     <p-card></p-card>
   </div>
 </template>
 
 <script>
-
-  import Card from '../src/modules/patterns/layout/card/main';
+  import pCard from '../src/modules/patterns/layout/card/main';
 
   export default {
     name: 'app',
     data () {
       return {
-        msg: 'Capai Memo'
+        msg: 'Vue Prototype'
       }
-    },
-    components: {
-      Card,
     }
   }
 </script>

@@ -26,8 +26,8 @@ const devServer = (port = 3333, proxy = 8080) => ({
         open: false,
         files: [
           path.resolve(__dirname, `../${PATHS.SRC}/**/*.scss`),
-          path.resolve(__dirname, `../${PATHS.SRC}/**/*.hbs`),
-          path.resolve(__dirname, `../${PATHS.DOCS}/**/*.hbs`)
+          path.resolve(__dirname, `../${PATHS.SRC}/**/*.js`),
+          path.resolve(__dirname, `../${PATHS.SRC}/**/*.json`)
         ]
       },
       {
