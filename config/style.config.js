@@ -34,7 +34,7 @@ const styles = (env) => ({
               ident: 'postcss',
               sourceMap: true,
               plugins: () => [
-                require('postcss-cssnext')(),
+                require('postcss-preset-env')(),
                 require('postcss-initial')()
               ]
             }

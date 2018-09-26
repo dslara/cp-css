@@ -16,7 +16,7 @@ const devServer = (port = 3333, proxy = 8080) => ({
     overlay: true,
     stats: 'errors-only'
   },
-  devtool: 'eval',
+  devtool: 'cheap-module-eval-source-map',
   plugins: [
     new BrowserSyncPlugin(
       {

@@ -1,0 +1,8 @@
+
+{
+  "bool": true,
+  "num": 33,
+  "str": "Test Component",
+  "arr": ["I", "am", "a", "Array"],
+  "obj": { "keyOne": "Object", "keyTwo": "Test"}
+}

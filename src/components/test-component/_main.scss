@@ -1,0 +1,11 @@
+
+@import "config";
+
+#{$component},
+.#{$component} {
+  display: block;
+}
+
+body {
+  font-family: system-ui;
+}

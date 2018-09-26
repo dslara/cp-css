@@ -1,20 +1,10 @@
+
 <template>
   <div>
-    <h1>{{msg}}</h1>
-     <p-card :content=msg></p-card>
-     <p-card></p-card>
+    <test-component :data.prop="data"></test-component>
+    <test-component></test-component>
   </div>
+
 </template>
 
-<script>
-  import pCard from '../src/modules/patterns/layout/card/main';
-
-  export default {
-    name: 'app',
-    data () {
-      return {
-        msg: 'Vue Prototype'
-      }
-    }
-  }
-</script>
+<script src="./app.js"></script>
